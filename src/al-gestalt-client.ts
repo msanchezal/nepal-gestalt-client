@@ -1,13 +1,11 @@
 /**
- * Gestalt API client
+ * Gestalt API client.
+ * Note: Put here gestalt endpoints without a service name.
  */
 import { ALClient, AlApiClient } from '@al/client';
 import { AlLocation } from '@al/common';
 
 export class AlGestaltClientInstance {
-
-    protected serviceName:string = 'gestalt';
-    protected serviceVersion:string = 'v1';
 
     constructor( public client:AlApiClient = ALClient ) {
         client.setGlobalParameters({ service_stack: AlLocation.GestaltAPI });
@@ -23,8 +21,6 @@ export class AlGestaltClientInstance {
      */
     async isGestaltResponding(): Promise<any> {
         const result = await this.client.get({
-            service_name: this.serviceName,
-            version: this.serviceVersion,
             path: `/canary`,
         });
         return result as any;

@@ -1,7 +1,15 @@
 /**
- * Types goes here.
- * TODO: Delete this test type.
+ * Gestalt client types
  */
-export interface GestatlInterface {
-    testing?: string;
+import { AIMSUser, AIMSAccount } from "@al/client";
+
+export interface AlThreatLevel {
+    value: string;
+    caption: string;
+}
+
+export interface AlIncidentsAlertOptions {
+    users?: AIMSUser[];
+    accounts?: AIMSAccount[];
+    threatLevels?: AlThreatLevel[];
 }
