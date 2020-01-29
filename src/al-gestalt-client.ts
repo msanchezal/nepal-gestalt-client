@@ -7,8 +7,9 @@ import { AlLocation } from '@al/common';
 
 export class AlGestaltClientInstance {
 
+    protected serviceStack:string = AlLocation.GestaltAPI;
+
     constructor( public client:AlApiClient = ALClient ) {
-        client.service_stack = AlLocation.GestaltAPI;
     }
 
     /**
@@ -21,6 +22,7 @@ export class AlGestaltClientInstance {
      */
     async isGestaltResponding(): Promise<any> {
         const result = await this.client.get({
+            service_stack: this.serviceStack,
             path: `/canary`,
         });
         return result as any;

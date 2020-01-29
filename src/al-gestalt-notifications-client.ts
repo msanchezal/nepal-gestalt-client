@@ -7,11 +7,11 @@ import { AlIncidentsAlertOptions } from './types';
 
 export class AlGestaltNotificationsClientInstance {
 
+    protected serviceStack:string = AlLocation.GestaltAPI;
     protected serviceName:string = 'notifications';
     protected serviceVersion:string = 'v1';
 
     constructor( public client:AlApiClient = ALClient ) {
-        client.service_stack = AlLocation.GestaltAPI;
     }
 
     /**
@@ -25,6 +25,7 @@ export class AlGestaltNotificationsClientInstance {
      */
     async getIncidentsAlertOptions(accountId: string): Promise<AlIncidentsAlertOptions> {
         const result = await this.client.get({
+            service_stack: this.serviceStack,
             service_name: this.serviceName,
             version: this.serviceVersion,
             path: `${accountId}/options/incident`
@@ -44,6 +45,7 @@ export class AlGestaltNotificationsClientInstance {
      */
     async getNotificationsCharacteristics(accountId: string, entity:string): Promise<AlCardstackCharacteristics> {
         const result = await this.client.get({
+            service_stack: this.serviceStack,
             service_name: this.serviceName,
             version: this.serviceVersion,
             path: `${accountId}/characteristics/${entity}`
