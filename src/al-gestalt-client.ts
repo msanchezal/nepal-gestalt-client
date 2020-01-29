@@ -8,7 +8,7 @@ import { AlLocation } from '@al/common';
 export class AlGestaltClientInstance {
 
     constructor( public client:AlApiClient = ALClient ) {
-        client.setGlobalParameters({ service_stack: AlLocation.GestaltAPI });
+        client.service_stack = AlLocation.GestaltAPI;
     }
 
     /**
