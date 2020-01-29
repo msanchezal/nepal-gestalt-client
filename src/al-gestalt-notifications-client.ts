@@ -2,7 +2,7 @@
  * Gestalt API client
  */
 import { ALClient, AlApiClient } from '@al/client';
-import { AlLocation } from '@al/common';
+import { AlLocation, AlCardstackCharacteristics } from '@al/common';
 import { AlIncidentsAlertOptions } from './types';
 
 export class AlGestaltNotificationsClientInstance {
@@ -31,4 +31,24 @@ export class AlGestaltNotificationsClientInstance {
         });
         return result as AlIncidentsAlertOptions;
     }
+
+    /**
+     * get characteristics for an entity and an account
+     * GET
+     * /notifications/v1/:account_id/characteristics/incident
+     * "https://gestalt-api.product.dev.alertlogic.com/notifications/v1/2/characteristics/incident"
+     *
+     * @param accountId AIMS Account ID
+     * @param entity incident
+     * @returns a promise with the subscriptions
+     */
+    async getNotificationsCharacteristics(accountId: string, entity:string): Promise<AlCardstackCharacteristics> {
+        const result = await this.client.get({
+            service_name: this.serviceName,
+            version: this.serviceVersion,
+            path: `${accountId}/characteristics/${entity}`
+        });
+        return result as AlCardstackCharacteristics;
+    }
+
 }
