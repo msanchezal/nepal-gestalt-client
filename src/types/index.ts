@@ -23,8 +23,8 @@ export interface AlIncidentsAlertOptions {
 /** Alert notifications */
 
 export interface AlNotificationCommonProperties {
-    id?: string;// AlCardstackItemProperties
-    caption?: string;// AlCardstackItemProperties
+    id: string;// AlCardstackItemProperties
+    caption: string;// AlCardstackItemProperties
     createdTime ?: number;
     createdBy ?: string;
     modifiedTime ?: number;
@@ -143,10 +143,13 @@ export class AlScheduledReportDefinition {
         this.id = rawData.id;
 
         this.properties = {
+            id: rawData.id,
+            caption: '',
         };
 
         if (rawData.name) {
             this.caption = rawData.name;
+            this.properties.caption = rawData.name;
         }
 
         if (rawData.definition) {
