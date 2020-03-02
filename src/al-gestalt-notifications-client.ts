@@ -3,7 +3,7 @@
  */
 import { ALClient, AlApiClient } from '@al/client';
 import { AlLocation, AlCardstackCharacteristics } from '@al/common';
-import { AlIncidentsAlertOptions, AlIncidentAlertDefinition } from './types';
+import { AlIncidentsAlertOptions, AlIncidentAlertDefinition, AlScheduledReportDefinition } from './types';
 
 export class AlGestaltNotificationsClientInstance {
 
@@ -63,14 +63,14 @@ export class AlGestaltNotificationsClientInstance {
      * @param entity incident
      * @returns a promise with the subscriptions
      */
-    async getNotificationsList(accountId: string, entity:string): Promise<AlIncidentAlertDefinition[]> {
+    async getNotificationsList(accountId: string, entity:string): Promise<AlIncidentAlertDefinition[] | AlScheduledReportDefinition[]> {
         const result = await this.client.get({
             service_stack: this.serviceStack,
             service_name: this.serviceName,
             version: this.serviceVersion,
             path: `${accountId}/list/${entity}`
         });
-        return result as AlIncidentAlertDefinition[];
+        return result as (AlIncidentAlertDefinition[] | AlScheduledReportDefinition[]);
     }
 
 }
