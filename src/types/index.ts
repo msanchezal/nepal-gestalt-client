@@ -69,7 +69,7 @@ export interface AlScheduledReportProperties extends AlNotificationCommonPropert
     // populated in the view
     workbookName ?: string;
     viewName ?: string;
-    cadenceName ?: string ;// "weekly", "daily", "monthly" "every_15_minutes"
+    cadenceName ?: "daily"| "weekly"| "monthly"| "every_15_minutes";
 }
 
 
