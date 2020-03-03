@@ -63,14 +63,14 @@ export class AlGestaltNotificationsClientInstance {
      * @param entity incident
      * @returns a promise with the subscriptions
      */
-    async getNotificationsList(accountId: string, entity:string): Promise<AlIncidentAlertDefinition[] | AlScheduledReportDefinition[]> {
+    async getNotificationsList(accountId: string, entity:string): Promise<AlIncidentAlertDefinition[]> {
         const result = await this.client.get({
             service_stack: this.serviceStack,
             service_name: this.serviceName,
             version: this.serviceVersion,
             path: `${accountId}/list/${entity}`
         });
-        return result as (AlIncidentAlertDefinition[] | AlScheduledReportDefinition[]);
+        return result as AlIncidentAlertDefinition[];
     }
 
 }
