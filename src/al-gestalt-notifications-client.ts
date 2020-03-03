@@ -3,7 +3,7 @@
  */
 import { ALClient, AlApiClient } from '@al/client';
 import { AlLocation, AlCardstackCharacteristics } from '@al/common';
-import { AlIncidentsAlertOptions, AlIncidentAlertDefinition, AlScheduledReportDefinition } from './types';
+import { AlIncidentsAlertOptions, AlIncidentAlertDefinition } from './types';
 
 export class AlGestaltNotificationsClientInstance {
 
