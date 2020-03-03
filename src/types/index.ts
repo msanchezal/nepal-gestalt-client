@@ -53,6 +53,7 @@ export interface AlNotificationCommonProperties {
 export interface AlIncidentAlertProperties extends AlNotificationCommonProperties{
 
     // the next fields are going to be populate in the app
+    notificationType ?: string;
     threatLevel ?: string[]; // filters example threat rathing
 }
 
@@ -127,6 +128,10 @@ export class AlIncidentAlertDefinition {
 
         if (rawData.account_id) {
             this.properties.accountId = rawData.account_id;
+        }
+
+        if (rawData.notification_type) {
+            this.properties.notificationType = rawData.notification_type;
         }
     }
 }
