@@ -74,7 +74,13 @@ export interface AlScheduledReportProperties extends AlNotificationCommonPropert
 }
 
 
-export class AlIncidentAlertDefinition {
+export interface AlAlertDefinition {
+    id: string;
+    caption: string;
+    properties: any;
+}
+
+export class AlIncidentAlertDefinition implements AlAlertDefinition{
     public id: string;
     public caption: string;
     public properties: AlIncidentAlertProperties;
@@ -136,16 +142,16 @@ export class AlIncidentAlertDefinition {
     }
 }
 
-
-export class AlScheduledReportDefinition {
+export class AlScheduledReportDefinition implements AlAlertDefinition{
     public id: string;
-    public caption?: string;
+    public caption: string;
 
     public properties: AlScheduledReportProperties;
 
     constructor(rawData: ReportSchedule) {
         // from cargo
         this.id = rawData.id;
+        this.caption = rawData.name || '';
 
         this.properties = {
             id: rawData.id,
@@ -154,7 +160,6 @@ export class AlScheduledReportDefinition {
 
         if (rawData.name) {
             this.caption = rawData.name;
-            this.properties.caption = rawData.name;
         }
 
         if (rawData.definition) {
